@@ -4,7 +4,7 @@
 		path 		= require('path'),
 		util 		= require('util');
 
-	http.createServer(function(request,response){
+	var server = http.createServer(function(request,response){
 		
 		//criando caminho arquivo
 		//__dirname = caminho do projeto
@@ -70,4 +70,8 @@
 		//otimizar buffer
 		util.pump(readStream, response);
 		
-	}).listen(3000);
+	});
+	
+	var port = process.env.PORT || 3000;
+	
+	server.listen(port);
